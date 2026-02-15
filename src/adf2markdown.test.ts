@@ -1,9 +1,9 @@
 import { describe, expect, it } from "bun:test";
-import { adf2md } from "./adf2md";
+import { adf2markdown } from "./adf2markdown";
 import adfFixture from "../fixtures/adf.json";
 import markdownFixture from "../fixtures/document.md" with { type: "text" };
 
-describe("adf2md", () => {
+describe("adf2markdown", () => {
   it("should convert ordered list", () => {
     const adf = {
       version: 1,
@@ -20,7 +20,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("1. First item\n2. Second item\n3. Third item\n");
   });
@@ -64,7 +64,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("1. First item\n   1. Second item\n      1. Third item\n");
   });
@@ -85,7 +85,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("- First item\n- Second item\n- Third item\n");
   });
@@ -129,7 +129,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("- First item\n  - Second item\n    - Third item\n");
   });
@@ -146,7 +146,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("Hello world\n");
   });
@@ -163,7 +163,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("**Bold text**\n");
   });
@@ -180,7 +180,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("_Italic text_\n");
   });
@@ -197,7 +197,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("~~Strikethrough text~~\n");
   });
@@ -214,7 +214,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("`inline code`\n");
   });
@@ -231,7 +231,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("<u>Underlined text</u>\n");
   });
@@ -254,7 +254,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("[Atlassian](https://atlassian.com)\n");
   });
@@ -271,7 +271,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("<sub>2</sub>\n");
   });
@@ -288,7 +288,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("<sup>2</sup>\n");
   });
@@ -307,7 +307,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("Colored text\n");
   });
@@ -324,7 +324,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("_**Bold and italic**_\n");
   });
@@ -340,7 +340,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("# Heading 1\n\n## Heading 2\n\n### Heading 3\n");
   });
@@ -360,7 +360,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("> This is the first line\n> \n> This is the second line\n");
   });
@@ -378,7 +378,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("```javascript\nconsole.log('Hello');\n```\n");
   });
@@ -396,7 +396,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("> **info:**\n> Info content\n");
   });
@@ -408,7 +408,7 @@ describe("adf2md", () => {
       content: [{ type: "rule" }],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("---\n");
   });
@@ -446,7 +446,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("| Header 1 | Header 2 |\n| -------- | -------- |\n| Cell 1   | Cell 2   |\n");
   });
@@ -457,7 +457,7 @@ describe("adf2md", () => {
       type: "doc",
       content: [{ type: "paragraph", content: [{ type: "inlineCard", attrs: { url: "https://example.com" } }] }],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("[https://example.com](https://example.com)\n");
   });
 
@@ -467,7 +467,7 @@ describe("adf2md", () => {
       type: "doc",
       content: [{ type: "paragraph", content: [{ type: "emoji", attrs: { shortName: ":smile:", text: "😄" } }] }],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("😄\n");
   });
 
@@ -477,7 +477,7 @@ describe("adf2md", () => {
       type: "doc",
       content: [{ type: "paragraph", content: [{ type: "date", attrs: { timestamp: "1600000000000" } }] }],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
 
     expect(markdown).toBe("2020-09-13T12:26:40.000Z\n");
   });
@@ -488,7 +488,7 @@ describe("adf2md", () => {
       type: "doc",
       content: [{ type: "paragraph", content: [{ type: "status", attrs: { text: "DONE", color: "green" } }] }],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("[DONE]\n");
   });
 
@@ -498,7 +498,7 @@ describe("adf2md", () => {
       type: "doc",
       content: [{ type: "paragraph", content: [{ type: "mention", attrs: { text: "@User" } }] }],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("@User\n");
   });
 
@@ -513,7 +513,7 @@ describe("adf2md", () => {
         },
       ],
     };
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("Line 1<br/>Line 2\n");
   });
 
@@ -544,7 +544,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("![moon.jpeg](https://www.exaple.com/moon.jpeg)\n");
   });
 
@@ -572,7 +572,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("[ ] Not done task\n\n[x] Done task\n");
   });
 
@@ -595,7 +595,7 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("> Simple decision\n");
   });
 
@@ -623,11 +623,11 @@ describe("adf2md", () => {
       ],
     };
 
-    const markdown = adf2md(adf);
+    const markdown = adf2markdown(adf);
     expect(markdown).toBe("> First decision\n\n> Second decision\n");
   });
 
   it("should convert the example document", () => {
-    expect(adf2md(adfFixture)).toBe(markdownFixture.replaceAll("\r\n", "\n"));
+    expect(adf2markdown(adfFixture)).toBe(markdownFixture.replaceAll("\r\n", "\n"));
   });
 });

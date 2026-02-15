@@ -1,1 +1,1 @@
-export { adf2md, type Adf } from "./src/adf2md";
+export { adf2markdown, type Adf } from "./src/adf2markdown";

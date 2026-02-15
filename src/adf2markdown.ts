@@ -174,6 +174,6 @@ function renderNode(node: Node, context: Context): string {
   return (renders[node.type] ?? renderChildren)(node, context);
 }
 
-export function adf2md(adf: Adf): string {
+export function adf2markdown(adf: Adf): string {
   return renderNode(adf, { join: "\n\n", ancestors: [], siblings: [] }) + "\n";
 }
