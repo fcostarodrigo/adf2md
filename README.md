@@ -1,5 +1,7 @@
 # adf2md
 
+![Main Branch Checks](https://github.com/fcostarodrigo/adf2md/actions/workflows/main.yml/badge.svg)
+
 Convert Atlassian ADF (Jira/Confluence) to clean Markdown — a lightweight JS library designed to make Jira tickets readable and understandable by LLMs
 
 ## Installation

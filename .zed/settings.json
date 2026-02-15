@@ -1,0 +1,9 @@
+{
+  "language_servers": ["!eslint", "!tailwindcss-language-server", "..."],
+  "formatter": {
+    "external": {
+      "command": "bun",
+      "arguments": ["run", "oxfmt", "--stdin-filepath", "{buffer_path}"]
+    }
+  }
+}
